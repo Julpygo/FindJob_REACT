@@ -101,6 +101,54 @@ const handleSubmit = async (e) => {
                         />
                       )}
                     />
+                    <Autocomplete
+                      multiple
+                      id="tags-filled"
+                      options={lists.cargos}
+                      freeSolo
+                      value={requirements_min}
+                      onChange={(event, newValue) => setRequirements_min(newValue)}
+                      renderValue={(value, getItemProps) =>
+                        value.map((option, index) => {
+                          const { key, ...itemProps } = getItemProps({ index });
+                          return (
+                            <Chip variant="outlined" label={option} key={key} {...itemProps} />
+                          );
+                        })
+                      }
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          variant="filled"
+                          label="Requisitos obligatorios"
+                          placeholder="añadir requisito"
+                        />
+                      )}
+                    />
+                    <Autocomplete
+                      multiple
+                      id="tags-filled"
+                      options={lists.cargos}
+                      freeSolo
+                      value={requirements_opc}
+                      onChange={(event, newValue) => setRequirements_opc(newValue)}
+                      renderValue={(value, getItemProps) =>
+                        value.map((option, index) => {
+                          const { key, ...itemProps } = getItemProps({ index });
+                          return (
+                            <Chip variant="outlined" label={option} key={key} {...itemProps} />
+                          );
+                        })
+                      }
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          variant="filled"
+                          label="Requisitos opcionales"
+                          placeholder="añadir requisito"
+                        />
+                      )}
+                    />
                   </Stack>
                 </Grid>
                 <Grid item xs={3}>
@@ -124,22 +172,6 @@ const handleSubmit = async (e) => {
                     label="Descripción"
                     value={descripcion}
                     onChange={(e) => setDescripcion(e.target.value)}
-                    fullWidth
-                  />
-                </Grid>
-                <Grid item xs={3}>
-                  <TextField
-                    label="Requisitos obligatorios"
-                    value={requirements_min}
-                    onChange={(e) => setRequirements_min(e.target.value)}
-                    fullWidth
-                  />
-                </Grid>
-                <Grid item xs={3}>
-                  <TextField
-                    label="Requisitos opcionales"
-                    value={requirements_opc}
-                    onChange={(e) => setRequirements_opc(e.target.value)}
                     fullWidth
                   />
                 </Grid>
