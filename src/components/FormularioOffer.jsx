@@ -11,6 +11,7 @@ import {
   Stack
 } from '@mui/material';
 import lists from "../data/lists.json"
+import { offerCreate } from '../services/offer';
 
 export default function FormularioOffer(){
     const [company_id, setCompanyid] = useState('')
@@ -36,14 +37,9 @@ const handleSubmit = async (e) => {
         requirements_opc
     };
     try {
-        const response = await fetch("http://localhost:3005/api/offers/create",{
-            method: "POST",
-            headers: {"Content-Type": "application/json" },
-            body: JSON.stringify(payload)
-        })
-        console.log(JSON.stringify(payload));
+        const response = await offerCreate(payload)
+        console.log(response);
         
-        const resultado = await response.json();
     }catch (err) {
         alert("Error al enviar: " + err.message);
     }
@@ -59,7 +55,7 @@ const handleSubmit = async (e) => {
           <Grid container spacing={2}>
             </Grid>
               <Grid container spacing={2} key={1} sx={{ mt: 2 }}>
-                <Grid item xs={3}>
+                <Grid item size={6}>
                   <TextField
                     label="NIT"
                     value={company_id}
@@ -67,7 +63,7 @@ const handleSubmit = async (e) => {
                     fullWidth
                   />
                 </Grid>
-                <Grid item xs={3}>
+                <Grid item size={6}>
                   <TextField
                     label="Nombre de la empresa"
                     value={company_name}
@@ -75,8 +71,8 @@ const handleSubmit = async (e) => {
                     fullWidth
                   />
                 </Grid>
-                <Grid item xs={3}>
-                  <Stack spacing={3} sx={{ width: 500 }}>
+                <Grid item size={12}>
+                  <Stack spacing={3}>
                     <Autocomplete
                       multiple
                       id="tags-filled"
@@ -151,7 +147,7 @@ const handleSubmit = async (e) => {
                     />
                   </Stack>
                 </Grid>
-                <Grid item xs={3}>
+                <Grid item size={6}>
                   <TextField
                     label="Salario"
                     value={salary}
@@ -167,9 +163,10 @@ const handleSubmit = async (e) => {
                     fullWidth
                   />
                 </Grid>
-                <Grid item xs={3}>
+                <Grid item size={12}>
                   <TextField
                     label="Descripción"
+                    multiline
                     value={descripcion}
                     onChange={(e) => setDescripcion(e.target.value)}
                     fullWidth

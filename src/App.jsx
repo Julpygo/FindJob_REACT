@@ -1,14 +1,17 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import FormularioOffer from './components/FormularioOffer'
-// import './App.css'
+import CardOffer from './components/CardOffer'
+import './App.css'
+import {Route, Routes} from 'react-router-dom'
+import Offers from './components/Offers'
 
 function App() {
   return (
-    <>
-      <FormularioOffer />
-    </>
+    <Routes>
+      <Route path='/' element={<FormularioOffer/>} />
+      <Route path='/offers' element={<CardOffer/>} />
+      <Route path='/offers2' element={<Offers/>} />
+    </Routes>
   )
 }
 
