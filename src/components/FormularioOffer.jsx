@@ -38,7 +38,7 @@ const handleSubmit = async (e) => {
     };
     try {
         const response = await offerCreate(payload)
-        console.log(response);
+        alert("Oferta creada");
         
     }catch (err) {
         alert("Error al enviar: " + err.message);

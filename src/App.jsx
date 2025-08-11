@@ -9,8 +9,7 @@ function App() {
   return (
     <Routes>
       <Route path='/' element={<FormularioOffer/>} />
-      <Route path='/offers' element={<CardOffer/>} />
-      <Route path='/offers2' element={<Offers/>} />
+      <Route path='/offers' element={<Offers/>} />
     </Routes>
   )
 }

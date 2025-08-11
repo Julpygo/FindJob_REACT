@@ -16,7 +16,7 @@ export default function Offers() {
     return(
         <>
         <section className="container">
-            <h2 className="text-center">Mis Ofertas</h2>
+            <h2 className="text-center">Ofertas disponibles</h2>
             <div className="row">
                 {Offers.map((offers,i)=>(
                     <CardOffer
